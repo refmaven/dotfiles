@@ -1,0 +1,38 @@
+{
+    "layer": "top",
+    "height": 30,
+    "spacing": 0,
+
+    "modules-left": [
+    ],
+
+    "modules-center": [
+  		  "idle_inhibitor",
+        	"battery",
+            "clock",
+            "tray"
+    ],
+
+    "modules-right": [
+    ],
+    
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+        "spacing": 6
+    },
+
+    "clock": {
+        "format": "{:%d%m%y %H%M}"
+    },
+
+    "battery": {
+        "format": "{capacity}%"
+    }
+}
