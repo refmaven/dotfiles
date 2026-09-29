@@ -1,0 +1,10 @@
+[SddmGreeterTheme]
+Name=E-Ink Dark
+Description=Minimal monochrome e-reader inspired SDDM theme
+Author=rm
+License=MIT
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+Theme-Id=eink-dark
+Theme-API=2.0
