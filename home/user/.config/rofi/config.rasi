@@ -1,0 +1,140 @@
+configuration {
+    font: "JetBrainsMono Nerd Font Mono 11.25";
+}
+
+* {
+    bg: #000000;
+    fg: #ffffff;
+    fg-muted: #aaaaaa;
+    selected-bg: #ffffff;
+    selected-fg: #000000;
+}
+
+window {
+    width: 35%;
+    height: 45%;
+    background-color: #000000;
+    padding: 0;
+}
+
+mainbox {
+    background-color: #000000;
+    children: [ inputbar, listview ];
+    spacing: 8px;
+}
+
+inputbar {
+    background-color: #000000;
+    border: 0px;
+    children: [ prompt, entry ];
+    spacing: 8px;
+}
+
+prompt {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+entry {
+    background-color: #000000;
+    text-color: #ffffff;
+    placeholder: "search";
+    placeholder-color: #aaaaaa;
+}
+
+listview {
+    background-color: #000000;
+    columns: 1;
+    lines: 8;
+    spacing: 2px;
+    scrollbar: false;
+}
+
+element {
+    background-color: #000000;
+    text-color: #ffffff;
+    padding: 0px;
+    margin: 0;
+}
+
+element-text {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+element-icon {
+    background-color: #000000;
+    size: 24px;
+}
+
+element normal {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+element normal element-text {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+element normal element-icon {
+    background-color: #000000;
+}
+
+element alternate {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+element alternate element-text {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+element alternate element-icon {
+    background-color: #000000;
+}
+
+element selected {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+
+element selected element-text {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+
+element selected element-icon {
+    background-color: #ffffff;
+}
+
+element urgent {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+element urgent element-text {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+element urgent element-icon {
+    background-color: #000000;
+}
+
+scrollbar {
+    background-color: #000000;
+    handle-color: #ffffff;
+    handle-width: 0px;
+}
+
+message {
+    background-color: #000000;
+    text-color: #aaaaaa;
+}
+
+textbox {
+    background-color: #000000;
+    text-color: #ffffff;
+}
