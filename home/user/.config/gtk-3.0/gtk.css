@@ -1,0 +1,126 @@
+/* pure black gtk theme */
+
+* {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+/* main window */
+window,
+.background,
+.view,
+textview,
+textview text {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* thunar file view */
+.thunar,
+.thunar-window,
+.thunar-side-pane,
+.thunar-tree-view,
+.thunar-details-view,
+iconview,
+treeview,
+list {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* file names and icons */
+.view text,
+.view label {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+/* sidebar */
+.sidebar,
+.sidebar-view,
+placessidebar,
+placessidebar row {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* selected files */
+.view:selected,
+.view:selected:focus,
+.view:selected:hover,
+.view text:selected,
+.view label:selected {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* selected sidebar item */
+.sidebar row:selected,
+.sidebar row:selected:focus,
+placessidebar row:selected,
+placessidebar row:selected:focus {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* entry/search fields */
+entry,
+searchentry {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* buttons */
+button {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+button:active,
+button:checked {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* menus */
+menu,
+menuitem {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+menuitem:hover,
+menuitem:selected {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* tooltips */
+tooltip {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* scrollbars */
+scrollbar,
+scrollbar trough {
+    background-color: #000000;
+}
+
+scrollbar slider {
+    background-color: #ffffff;
+}
+
+/* separators */
+separator {
+    background-color: #000000;
+}
