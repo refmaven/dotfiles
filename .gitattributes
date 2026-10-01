@@ -1,2 +1,2 @@
 *.jsonc linguist-language=JSON
-*.jsonc linguist-detectable=true
+*.* linguist-detectable=true
