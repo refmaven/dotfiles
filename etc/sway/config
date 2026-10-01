@@ -8,6 +8,10 @@ set $right l
 
 set $term foot
 
+# fonts
+font pango:JetBrainsMono Nerd Font Mono 10
+
+# rofi
 set $rofi_cmd rofi \
         -terminal '$term'
 
