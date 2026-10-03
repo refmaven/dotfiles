@@ -56,6 +56,9 @@ bindsym Ctrl+Alt+semicolon exec flatpak run com.github.Anuken.mindustry
 
 
 ## ctrl+shift+alt
+bindsym Ctrl+Shift+Alt+up layout tabbed
+bindsym Ctrl+Shift+Alt+down layout toggle split
+bindsym Ctrl+Shift+Alt+right layout stacking
 bindsym Ctrl+Shift+Alt+l exec swaylock
 bindsym Ctrl+Shift+Alt+k exec systemctl suspend
 bindsym Ctrl+Shift+Alt+o exec systemctl poweroff
@@ -182,3 +185,6 @@ input type:touchpad {
 input "1739:52780:SYNA2BA6:00_06CB:CE2C_Touchpad" {
     pointer_accel 0.525
 }
+
+# Perbaikan kursor hilang
+seat seat0 xcursor_theme Adwaita 24
