@@ -128,22 +128,16 @@ element alternate element-icon {
 
 element selected {
     background-color: #ffffff;
-    border: 0px;
-    border-color: #ffffff;
     text-color: #000000;
 }
 
 element selected element-text {
     background-color: #ffffff;
-    border: 0px;
-    border-color: #ffffff;
     text-color: #000000;
 }
 
 element selected element-icon {
     background-color: #ffffff;
-    border: 0px;
-    border-color: #ffffff;
 }
 
 element urgent {
@@ -186,4 +180,77 @@ textbox {
     border: 0px;
     border-color: #000000;
     text-color: #ffffff;
+}
+
+/* Unselected items */
+element normal {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+element alternate {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+/* Selected item only */
+element selected {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+element selected.normal {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+element selected.active {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+element selected.urgent {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+
+/* Selected text */
+element selected element-text {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+element selected.normal element-text {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+element selected.active element-text {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+element selected.urgent element-text {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+
+
+/* Row contents follow their parent row colors */
+element-text,
+element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+/* All unselected rows stay black with white text */
+element.normal.normal,
+element.alternate.normal,
+element.normal.active,
+element.alternate.active,
+element.normal.urgent,
+element.alternate.urgent {
+    background-color: #000000;
+    text-color: #ffffff;
+}
+
+/* Only the selected row becomes white with black text */
+element.selected.normal,
+element.selected.active,
+element.selected.urgent {
+    background-color: #ffffff;
+    text-color: #000000;
 }
