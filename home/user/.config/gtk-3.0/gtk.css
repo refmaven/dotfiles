@@ -1,126 +1,250 @@
-/* pure black gtk theme */
+```css
+/*
+ * eink dark gtk theme
+ *
+ * aesthetic: pure black, soft white, minimal contrast accents.
+ * designed for gtk applications, especially thunar.
+ */
+
+/* ── palette ─────────────────────────────────────────── */
+
+@define-color bg          #000000;
+@define-color surface     #0a0a0a;
+@define-color surface-alt #141414;
+@define-color fg          #e8e8e8;
+@define-color fg-muted    #999999;
+@define-color border      #333333;
+@define-color accent      #ffffff;
+@define-color selected-bg #e8e8e8;
+@define-color selected-fg #000000;
+
+
+/* ── global defaults ─────────────────────────────────── */
 
 * {
-    background-color: #000000;
-    color: #ffffff;
-    border-color: #000000;
+    color: @fg;
+    border-color: @border;
+    outline-color: @fg-muted;
+    text-shadow: none;
+    box-shadow: none;
 }
 
-/* main window */
 window,
-.background,
+.background {
+    background-color: @bg;
+    color: @fg;
+}
+
+
+/* ── content areas ───────────────────────────────────── */
+
 .view,
 textview,
-textview text {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-/* thunar file view */
-.thunar,
-.thunar-window,
-.thunar-side-pane,
-.thunar-tree-view,
-.thunar-details-view,
+textview text,
 iconview,
 treeview,
 list {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: @bg;
+    color: @fg;
 }
 
-/* file names and icons */
+/* file names, labels, and general content text */
 .view text,
 .view label {
-    color: #ffffff;
-    background-color: #000000;
+    color: @fg;
+    background-color: transparent;
 }
 
-/* sidebar */
+/* secondary information */
+.dim-label,
+.sidebar .dim-label {
+    color: @fg-muted;
+}
+
+
+/* ── sidebar and navigation ──────────────────────────── */
+
 .sidebar,
 .sidebar-view,
 placessidebar,
-placessidebar row {
-    background-color: #000000;
-    color: #ffffff;
+placessidebar row,
+.thunar-side-pane,
+.thunar-tree-view {
+    background-color: @bg;
+    color: @fg;
 }
 
-/* selected files */
+/* subtle hover feedback */
+.sidebar row:hover,
+placessidebar row:hover {
+    background-color: @surface-alt;
+    color: @fg;
+}
+
+
+/* ── selection ───────────────────────────────────────── */
+
 .view:selected,
 .view:selected:focus,
 .view:selected:hover,
 .view text:selected,
-.view label:selected {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-/* selected sidebar item */
+.view label:selected,
 .sidebar row:selected,
 .sidebar row:selected:focus,
 placessidebar row:selected,
 placessidebar row:selected:focus {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @selected-bg;
+    color: @selected-fg;
 }
 
-/* entry/search fields */
+/* keep selected text readable */
+.view:selected text,
+.view:selected label,
+.sidebar row:selected label,
+placessidebar row:selected label {
+    color: @selected-fg;
+}
+
+
+/* ── text fields and search ──────────────────────────── */
+
 entry,
-searchentry {
-    background-color: #000000;
-    color: #ffffff;
-    border-color: #ffffff;
+searchentry,
+spinbutton {
+    background-color: @surface;
+    color: @fg;
+    border: 1px solid @border;
+    caret-color: @fg;
+    padding: 4px 6px;
 }
 
-/* buttons */
+entry:focus,
+searchentry:focus,
+spinbutton:focus {
+    border-color: @fg-muted;
+}
+
+entry:disabled,
+searchentry:disabled {
+    color: @fg-muted;
+    background-color: @bg;
+}
+
+
+/* ── buttons ─────────────────────────────────────────── */
+
 button {
-    background-color: #000000;
-    color: #ffffff;
-    border-color: #000000;
+    background-color: @surface;
+    color: @fg;
+    border: 1px solid @border;
+    border-radius: 3px;
+    padding: 4px 8px;
 }
 
 button:hover {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @surface-alt;
+    color: @accent;
+    border-color: @fg-muted;
 }
 
 button:active,
 button:checked {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @selected-bg;
+    color: @selected-fg;
+    border-color: @selected-bg;
 }
 
-/* menus */
+button:disabled {
+    color: @fg-muted;
+    border-color: @border;
+}
+
+
+/* ── menus and popovers ───────────────────────────────── */
+
 menu,
+.menu,
+popover,
+popover contents {
+    background-color: @surface;
+    color: @fg;
+    border: 1px solid @border;
+}
+
 menuitem {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: transparent;
+    color: @fg;
+    padding: 4px 8px;
 }
 
 menuitem:hover,
 menuitem:selected {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @selected-bg;
+    color: @selected-fg;
 }
 
-/* tooltips */
+
+/* ── tooltips ────────────────────────────────────────── */
+
 tooltip {
-    background-color: #000000;
-    color: #ffffff;
-    border-color: #ffffff;
+    background-color: @surface-alt;
+    color: @fg;
+    border: 1px solid @border;
+    padding: 4px 6px;
 }
 
-/* scrollbars */
-scrollbar,
+
+/* ── scrollbars ──────────────────────────────────────── */
+
+scrollbar {
+    background-color: @bg;
+}
+
 scrollbar trough {
-    background-color: #000000;
+    background-color: @surface;
+    border: none;
 }
 
 scrollbar slider {
-    background-color: #ffffff;
+    background-color: @fg-muted;
+    border: 1px solid @bg;
+    border-radius: 0;
+    min-width: 6px;
+    min-height: 6px;
 }
 
-/* separators */
-separator {
-    background-color: #000000;
+scrollbar slider:hover {
+    background-color: @fg;
 }
+
+
+/* ── separators and borders ──────────────────────────── */
+
+separator {
+    background-color: @border;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+frame,
+frame > border {
+    border-color: @border;
+}
+
+
+/* ── focus and progress ──────────────────────────────── */
+
+*:focus-visible {
+    outline: 1px solid @fg-muted;
+    outline-offset: -2px;
+}
+
+progressbar trough {
+    background-color: @surface-alt;
+    border: 1px solid @border;
+}
+
+progressbar progress {
+    background-color: @fg;
+}
+```
