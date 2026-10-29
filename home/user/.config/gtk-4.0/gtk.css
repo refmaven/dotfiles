@@ -1,0 +1,15 @@
+@define-color window_bg_color #000000;
+@define-color window_fg_color #ffffff;
+@define-color view_bg_color #000000;
+@define-color view_fg_color #ffffff;
+@define-color headerbar_bg_color #000000;
+@define-color headerbar_backdrop_color #000000;
+@define-color headerbar_fg_color #ffffff;
+@define-color headerbar_border_color #1a1a1a;
+@define-color sidebar_bg_color #000000;
+@define-color sidebar_backdrop_color #000000;
+@define-color secondary_sidebar_bg_color #000000;
+@define-color card_bg_color #0d0d0d;
+@define-color dialog_bg_color #000000;
+@define-color popover_bg_color #0d0d0d;
+@define-color thumbnail_bg_color #0d0d0d;
