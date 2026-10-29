@@ -4,16 +4,14 @@
     "spacing": 0,
 
     "modules-left": [
+    	"clock"
     ],
 
-    "modules-center": [
-  		  "idle_inhibitor",
-        	"battery",
-            "clock",
-            "tray"
-    ],
+    "modules-center": [],
 
     "modules-right": [
+    	"battery"
+    	//, "tray"
     ],
     
     "idle_inhibitor": {
