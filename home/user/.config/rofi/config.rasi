@@ -1,256 +1,207 @@
 configuration {
-    font: "JetBrainsMono Nerd Font Mono 11.25";
+font: "monospace 13";
 }
 
 * {
-    bg: #000000;
-    fg: #ffffff;
-    fg-muted: #aaaaaa;
-    selected-bg: #ffffff;
-    selected-fg: #000000;
-    border: 0px;
-    border-color: #000000;
-}
+  bg: #000000;
+  fg: #ffffff;
+  fg-muted: #aaaaaa;
+  selected-bg: #ffffff;
+  selected-fg: #000000;
+  border: 0px;
+  border-color: #000000;
+  }
 
 window {
     width: 35%;
     height: 45%;
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    padding: 0;
+    background-color: #000000cc;
+    border: 1px;
+    border-color: #ffffff25;
+    border-radius: 16px;
+    padding: 12px;
 }
 
 mainbox {
-    background-color: #000000;
+    background-color: transparent;
     border: 0px;
-    border-color: #000000;
     children: [ inputbar, listview ];
     spacing: 8px;
 }
 
 inputbar {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
+    background-color: #00000000;
+    border: 1px;
+    border-color: #ffffff20;
+    border-radius: 10px;
+    padding: 8px;
     children: [ prompt, entry ];
     spacing: 8px;
 }
 
 prompt {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+border: 0px;
+text-color: #ffffff;
 }
 
 entry {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
-    placeholder: "search";
-    placeholder-color: #aaaaaa;
+background-color: transparent;
+border: 0px;
+text-color: #ffffff;
+placeholder: "search";
+placeholder-color: #aaaaaa;
 }
 
 listview {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    columns: 1;
-    lines: 8;
-    spacing: 2px;
-    scrollbar: false;
+background-color: transparent;
+border: 0px;
+columns: 1;
+lines: 8;
+spacing: 2px;
+scrollbar: false;
 }
 
 element {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
-    padding: 0px;
-    margin: 0;
+background-color: transparent;
+border: 0px;
+text-color: #ffffff;
+padding: 0px;
+margin: 0px;
 }
 
 element-text {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: inherit;
 }
 
 element-icon {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    size: 24px;
+background-color: transparent;
+size: 24px;
 }
 
 element normal {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
 element normal element-text {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
 element normal element-icon {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
+background-color: transparent;
 }
 
 element alternate {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
 element alternate element-text {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
 element alternate element-icon {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
+background-color: transparent;
 }
 
 element selected {
-    background-color: #ffffff;
-    text-color: #000000;
+background-color: #ffffff;
+text-color: #000000;
 }
 
 element selected element-text {
-    background-color: #ffffff;
-    text-color: #000000;
+background-color: transparent;
+text-color: #000000;
 }
 
 element selected element-icon {
-    background-color: #ffffff;
+background-color: transparent;
 }
 
 element urgent {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
 element urgent element-text {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
 element urgent element-icon {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
+background-color: transparent;
 }
 
 scrollbar {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    handle-color: #ffffff;
-    handle-width: 0px;
+background-color: transparent;
+border: 0px;
+handle-color: #ffffff;
+handle-width: 0px;
 }
 
 message {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #aaaaaa;
+background-color: transparent;
+border: 0px;
+text-color: #aaaaaa;
 }
 
 textbox {
-    background-color: #000000;
-    border: 0px;
-    border-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+border: 0px;
+text-color: #ffffff;
 }
 
-/* Unselected items */
-element normal {
-    background-color: #000000;
-    text-color: #ffffff;
-}
+/* unselected items */
+element normal,
 element alternate {
-    background-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
-/* Selected item only */
-element selected {
-    background-color: #ffffff;
-    text-color: #000000;
-}
-element selected.normal {
-    background-color: #ffffff;
-    text-color: #000000;
-}
-element selected.active {
-    background-color: #ffffff;
-    text-color: #000000;
-}
+/* selected item */
+element selected,
+element selected.normal,
+element selected.active,
 element selected.urgent {
-    background-color: #ffffff;
-    text-color: #000000;
+background-color: #ffffff;
+text-color: #000000;
 }
 
-/* Selected text */
-element selected element-text {
-    background-color: #ffffff;
-    text-color: #000000;
-}
-element selected.normal element-text {
-    background-color: #ffffff;
-    text-color: #000000;
-}
-element selected.active element-text {
-    background-color: #ffffff;
-    text-color: #000000;
-}
+/* selected text */
+element selected element-text,
+element selected.normal element-text,
+element selected.active element-text,
 element selected.urgent element-text {
-    background-color: #ffffff;
-    text-color: #000000;
+background-color: transparent;
+text-color: #000000;
 }
 
-
-/* Row contents follow their parent row colors */
+/* row contents inherit their parent row's colors */
 element-text,
 element-icon {
-    background-color: inherit;
-    text-color: inherit;
+background-color: transparent;
+text-color: inherit;
 }
 
-/* All unselected rows stay black with white text */
+/* unselected rows */
 element.normal.normal,
 element.alternate.normal,
 element.normal.active,
 element.alternate.active,
 element.normal.urgent,
 element.alternate.urgent {
-    background-color: #000000;
-    text-color: #ffffff;
+background-color: transparent;
+text-color: #ffffff;
 }
 
-/* Only the selected row becomes white with black text */
+/* selected rows */
 element.selected.normal,
 element.selected.active,
 element.selected.urgent {
-    background-color: #ffffff;
-    text-color: #000000;
+background-color: #ffffff;
+text-color: #000000;
 }
