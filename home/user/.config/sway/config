@@ -1,0 +1,447 @@
+# variables
+
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term foot
+
+# ydotool (used by mouse mode)
+set $yd env YDOTOOL_SOCKET=/tmp/.ydotool_socket ydotool
+
+# mode bar visibility (see "mode bar" section)
+set $bar_show bar modebar mode dock
+set $bar_hide bar modebar mode invisible
+
+# fonts
+font pango:DejaVu Sans Mono 10
+
+# rofi
+set $rofi_cmd rofi \
+        -terminal '$term'
+
+set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+
+# e-reader dark mode
+output * bg #000000 solid_color
+
+
+# no window borders or titlebars
+default_border none
+default_floating_border none
+
+# black containers, white text
+client.focused          #000000 #000000 #ffffff #000000 #000000
+client.unfocused        #000000 #000000 #ffffff #000000 #000000
+client.focused_inactive #000000 #000000 #ffffff #000000 #000000
+client.urgent           #000000 #000000 #ffffff #000000 #000000
+client.placeholder      #000000 #000000 #ffffff #000000 #000000
+
+floating_modifier $mod normal
+
+exec waterfox --new-window "https://notebook.google.com" & waterfox --new-window "https://pomofocus.io" &
+
+
+# ============================================================
+# mode bar
+# ============================================================
+
+# only shows the active mode (resize / mouse).
+# hidden in the default mode; the bindings that enter or leave a
+# mode show or hide it with $bar_show / $bar_hide.
+
+bar {
+    id modebar
+    swaybar_command swaybar
+    position top
+    mode invisible
+
+    workspace_buttons no
+    binding_mode_indicator yes
+    tray_output none
+
+    font pango:monospace
+
+    colors {
+        background #000000
+        statusline #ffffff
+        separator  #000000
+        #                  border  background text
+        binding_mode       #000000 #000000    #ffffff
+    }
+}
+
+
+# ============================================================
+# keybindings
+# ============================================================
+
+# ------------------------------------------------------------
+# $mod
+# ------------------------------------------------------------
+
+# apps / launcher
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+
+# window management
+bindsym $mod+Shift+q kill
+
+# focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# modes
+bindsym $mod+r mode "resize"; $bar_show
+
+# session / config
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag \
+    -t warning \
+    -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
+    -B 'Yes, exit sway' \
+    'swaymsg exit'
+
+
+# ------------------------------------------------------------
+# Ctrl+Alt
+# ------------------------------------------------------------
+
+# apps / launchers
+bindsym Ctrl+Alt+Left exec foot
+bindsym Ctrl+Alt+v exec code
+bindsym Ctrl+Alt+m exec waterfox --new-window "https://notebook.google.com" & waterfox --new-window "https://pomofocus.io" &
+bindsym Ctrl+Alt+comma exec thunar
+bindsym Ctrl+Alt+N exec snap run netbeans
+bindsym Ctrl+Alt+space exec rofi -show drun
+bindsym Ctrl+Alt+period exec foot -e ssh -4 refmaven@tilde.club
+bindsym Ctrl+Alt+l exec flatpak run com.github.libresprite.LibreSprite
+bindsym Ctrl+Alt+semicolon exec flatpak run com.github.Anuken.mindustry
+
+# system tools
+bindsym Ctrl+Alt+b exec foot -e /home/refmaven/.cargo/bin/bluetui
+bindsym Ctrl+Alt+c exec foot -e /home/refmaven/go/bin/wifitui
+
+# bar
+bindsym Ctrl+Alt+z exec waybar &
+bindsym Ctrl+Alt+x exec killall waybar
+
+# window management
+bindsym Ctrl+Alt+slash kill
+
+
+# ------------------------------------------------------------
+# Ctrl+Shift+Alt
+# ------------------------------------------------------------
+
+# layout
+bindsym Ctrl+Shift+Alt+up layout tabbed
+bindsym Ctrl+Shift+Alt+down layout toggle split
+bindsym Ctrl+Shift+Alt+right layout stacking
+
+# move windows
+bindsym Ctrl+Shift+Alt+b move left
+bindsym Ctrl+Shift+Alt+n move down
+bindsym Ctrl+Shift+Alt+j move up
+bindsym Ctrl+Shift+Alt+m move right
+
+# window state
+bindsym Ctrl+Shift+Alt+f fullscreen
+bindsym Ctrl+Shift+Alt+space floating toggle
+
+# power / session
+bindsym Ctrl+Shift+Alt+l exec swaylock
+bindsym Ctrl+Shift+Alt+k exec systemctl suspend
+bindsym Ctrl+Shift+Alt+o exec systemctl poweroff
+bindsym Ctrl+Shift+Alt+p exec reboot
+
+# modes
+bindsym Ctrl+Super_L mode "mouse"; $bar_show
+
+# config
+bindsym Ctrl+Shift+Alt+backslash exec swaymsg reload
+
+
+# ============================================================
+# system configs
+# ============================================================
+
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+
+# touchpad
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+    click_method clickfinger
+    accel_profile adaptive
+}
+
+input "1739:52780:SYNA2BA6:00_06CB:CE2C_Touchpad" {
+    pointer_accel 1
+}
+
+# perbaikan kursor hilang
+seat seat0 xcursor_theme Adwaita 24
+
+
+# keyboard repeat
+
+input type:keyboard {
+    repeat_delay 250
+    repeat_rate 30
+}
+
+# window spacing
+
+gaps inner 0
+gaps outer 0
+smart_gaps off
+
+
+# ============================================================
+# resize mode
+# ============================================================
+
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    bindsym Return mode "default"; $bar_hide
+    bindsym Escape mode "default"; $bar_hide
+
+    # ----------------------------------------------------------
+    # Ctrl+Alt
+    # ----------------------------------------------------------
+
+    # apps / launchers
+    bindsym Ctrl+Alt+Left exec foot
+    bindsym Ctrl+Alt+v exec code
+    bindsym Ctrl+Alt+m exec waterfox
+    bindsym Ctrl+Alt+comma exec thunar
+    bindsym Ctrl+Alt+N exec snap run netbeans
+    bindsym Ctrl+Alt+space exec rofi -show drun
+    bindsym Ctrl+Alt+period exec foot -e ssh rm@tilde.club
+    bindsym Ctrl+Alt+l exec flatpak run com.github.libresprite.LibreSprite
+    bindsym Ctrl+Alt+semicolon exec flatpak run com.github.Anuken.mindustry
+
+    # system tools
+    bindsym Ctrl+Alt+b exec foot -e /home/refmaven/.cargo/bin/bluetui
+    bindsym Ctrl+Alt+c exec foot -e /home/refmaven/go/bin/wifitui
+
+    # bar
+    bindsym Ctrl+Alt+z exec waybar &
+    bindsym Ctrl+Alt+x exec killall waybar
+
+    # window management
+    bindsym Ctrl+Alt+slash kill
+
+    # ----------------------------------------------------------
+    # Ctrl+Shift+Alt
+    # ----------------------------------------------------------
+
+    # layout
+    bindsym Ctrl+Shift+Alt+up layout tabbed
+    bindsym Ctrl+Shift+Alt+down layout toggle split
+    bindsym Ctrl+Shift+Alt+right layout stacking
+
+    # move windows
+    bindsym Ctrl+Shift+Alt+b move left
+    bindsym Ctrl+Shift+Alt+n move down
+    bindsym Ctrl+Shift+Alt+j move up
+    bindsym Ctrl+Shift+Alt+m move right
+
+    # window state
+    bindsym Ctrl+Shift+Alt+f fullscreen
+    bindsym Ctrl+Shift+Alt+space floating toggle
+
+    # power / session
+    bindsym Ctrl+Shift+Alt+l exec swaylock
+    bindsym Ctrl+Shift+Alt+k exec systemctl suspend
+    bindsym Ctrl+Shift+Alt+o exec systemctl poweroff
+    bindsym Ctrl+Shift+Alt+p exec reboot
+
+    # modes
+    bindsym Ctrl+Super_L mode "mouse"; $bar_show
+
+    # config
+    bindsym Ctrl+Shift+Alt+backslash exec swaymsg reload
+}
+
+
+# ============================================================
+# mouse mode
+# ============================================================
+
+# toggle: Ctrl+Shift+Alt+]
+#
+# movement (arrows = straight, y u b n = diagonals)
+#   turbo (40px):   Shift + key
+#   fast (11px):    key
+#   slow (3px):     Alt + key
+#   precise (1px):  Ctrl + key
+#
+# scroll: k up, j down, h left, l right
+#
+# left click: Enter
+# double click: Ctrl+Enter
+# right click: Shift+Enter
+# middle click: Backspace
+# drag: d holds left button, f releases it
+#
+# exit: Escape or toggle shortcut
+
+mode "mouse" {
+
+    # ----------------------------------------------------------
+    # Ctrl+Alt
+    # ----------------------------------------------------------
+
+    # apps / launchers
+    bindsym Ctrl+Alt+Left exec foot
+    bindsym Ctrl+Alt+v exec code
+    bindsym Ctrl+Alt+m exec waterfox
+    bindsym Ctrl+Alt+comma exec thunar
+    bindsym Ctrl+Alt+N exec snap run netbeans
+    bindsym Ctrl+Alt+space exec rofi -show drun
+    bindsym Ctrl+Alt+period exec foot -e ssh refmaven@tilde.club
+    bindsym Ctrl+Alt+l exec flatpak run com.github.libresprite.LibreSprite
+    bindsym Ctrl+Alt+semicolon exec flatpak run com.github.Anuken.mindustry
+
+    # system tools
+    bindsym Ctrl+Alt+b exec foot -e /home/refmaven/.cargo/bin/bluetui
+    bindsym Ctrl+Alt+c exec foot -e /home/refmaven/go/bin/wifitui
+
+    # bar
+    bindsym Ctrl+Alt+z exec waybar &
+    bindsym Ctrl+Alt+x exec killall waybar
+
+    # window management
+    bindsym Ctrl+Alt+slash kill
+
+    # ----------------------------------------------------------
+    # Ctrl+Shift+Alt
+    # ----------------------------------------------------------
+
+    # layout
+    bindsym Ctrl+Shift+Alt+up layout tabbed
+    bindsym Ctrl+Shift+Alt+down layout toggle split
+    bindsym Ctrl+Shift+Alt+right layout stacking
+
+    # move windows
+    bindsym Ctrl+Shift+Alt+b move left
+    bindsym Ctrl+Shift+Alt+n move down
+    bindsym Ctrl+Shift+Alt+j move up
+    bindsym Ctrl+Shift+Alt+m move right
+
+    # window state
+    bindsym Ctrl+Shift+Alt+f fullscreen
+    bindsym Ctrl+Shift+Alt+space floating toggle
+
+    # power / session
+    bindsym Ctrl+Shift+Alt+l exec swaylock
+    bindsym Ctrl+Shift+Alt+k exec systemctl suspend
+    bindsym Ctrl+Shift+Alt+o exec systemctl poweroff
+    bindsym Ctrl+Shift+Alt+p exec reboot
+
+    # config
+    bindsym Ctrl+Shift+Alt+backslash exec swaymsg reload
+
+    # ----------------------------------------------------------
+    # mouse controls
+    # ----------------------------------------------------------
+
+    # turbo movement (40px)
+    bindsym Shift+Up    exec $yd mousemove -- 0 -40
+    bindsym Shift+Down  exec $yd mousemove -- 0 40
+    bindsym Shift+Left  exec $yd mousemove -- -40 0
+    bindsym Shift+Right exec $yd mousemove -- 40 0
+
+    # turbo diagonal movement
+    bindsym Shift+y exec $yd mousemove -- -40 -40
+    bindsym Shift+u exec $yd mousemove -- 40 -40
+    bindsym Shift+b exec $yd mousemove -- -40 40
+    bindsym Shift+n exec $yd mousemove -- 40 40
+
+    # fast movement (11px)
+    bindsym Up    exec $yd mousemove -- 0 -11
+    bindsym Down  exec $yd mousemove -- 0 11
+    bindsym Left  exec $yd mousemove -- -11 0
+    bindsym Right exec $yd mousemove -- 11 0
+
+    # fast diagonal movement
+    bindsym y exec $yd mousemove -- -11 -11
+    bindsym u exec $yd mousemove -- 11 -11
+    bindsym b exec $yd mousemove -- -11 11
+    bindsym n exec $yd mousemove -- 11 11
+
+    # slow movement (3px)
+    bindsym Mod1+Up    exec $yd mousemove -- 0 -3
+    bindsym Mod1+Down  exec $yd mousemove -- 0 3
+    bindsym Mod1+Left  exec $yd mousemove -- -3 0
+    bindsym Mod1+Right exec $yd mousemove -- 3 0
+
+    # slow diagonal movement
+    bindsym Mod1+y exec $yd mousemove -- -3 -3
+    bindsym Mod1+u exec $yd mousemove -- 3 -3
+    bindsym Mod1+b exec $yd mousemove -- -3 3
+    bindsym Mod1+n exec $yd mousemove -- 3 3
+
+    # precise movement (1px)
+    bindsym Ctrl+Up    exec $yd mousemove -- 0 -1
+    bindsym Ctrl+Down  exec $yd mousemove -- 0 1
+    bindsym Ctrl+Left  exec $yd mousemove -- -1 0
+    bindsym Ctrl+Right exec $yd mousemove -- 1 0
+
+    # precise diagonal movement
+    bindsym Ctrl+y exec $yd mousemove -- -1 -1
+    bindsym Ctrl+u exec $yd mousemove -- 1 -1
+    bindsym Ctrl+b exec $yd mousemove -- -1 1
+    bindsym Ctrl+n exec $yd mousemove -- 1 1
+
+    # scroll wheel (flip the signs if a direction feels inverted)
+    bindsym j exec $yd mousemove --wheel -- 0 1
+    bindsym k exec $yd mousemove --wheel -- 0 -1
+    bindsym h exec $yd mousemove --wheel -- -1 0
+    bindsym l exec $yd mousemove --wheel -- 1 0
+
+    # clicks
+    bindsym Return       exec $yd click 0xC0
+    bindsym Ctrl+Return  exec $yd click --repeat 2 --next-delay 40 0xC0
+    bindsym Shift+Return exec $yd click 0xC1
+    bindsym BackSpace    exec $yd click 0xC2
+
+    # drag (hold / release left button)
+    bindsym d exec $yd click 0x40
+    bindsym f exec $yd click 0x80
+
+    # exit mouse mode
+    bindsym Ctrl+Super_L mode "default"; $bar_hide
+}
+
+for_window [window_role="dialog"] floating enable
+for_window [window_type="dialog"] floating enable
