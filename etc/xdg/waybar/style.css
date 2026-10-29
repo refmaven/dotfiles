@@ -1,14 +1,30 @@
 * {
-    font-family: "JetBrainsMono Nerd Font Mono";
-   	background-color: black;
-   	font-size: 12.5px;
-   	margin: 0px 2px;
+  font-family: monospace;
+  font-size: 13.5px;
+  color: #ffffff;
+  border: none;
+  min-height: 0;
+  margin: 2px 4px;
+  }
+
+window#waybar {
+background: transparent;
+color: #ffffff;
 }
 
-#idle_inhibitor, #battery {
-	margin: 5px;
+#clock,
+#battery {
+background-color: rgba(0, 0, 0, 0.80);
+color: #ffffff;
+border: 1px solid rgba(255, 255, 255, 0.12);
+border-radius: 12px;
+margin: 5px;
+padding: 3px 10px;
 }
 
-#idle_inhibitor {
-		font-size: 20px;
+tooltip {
+background-color: rgba(0, 0, 0, 0.92);
+color: #ffffff;
+border: 1px solid rgba(255, 255, 255, 0.15);
+border-radius: 10px;
 }
