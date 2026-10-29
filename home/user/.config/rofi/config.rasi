@@ -15,10 +15,10 @@ font: "monospace 13";
 window {
     width: 35%;
     height: 45%;
-    background-color: #000000cc;
+    background-color: #000000;
     border: 1px;
-    border-color: #ffffff25;
-    border-radius: 16px;
+    border-color: #252525;
+    border-radius: 0px;
     padding: 12px;
 }
 
@@ -30,10 +30,10 @@ mainbox {
 }
 
 inputbar {
-    background-color: #00000000;
+    background-color: #000000;
     border: 1px;
-    border-color: #ffffff20;
-    border-radius: 10px;
+    border-color: #202020;
+    border-radius: 0px;
     padding: 8px;
     children: [ prompt, entry ];
     spacing: 8px;
